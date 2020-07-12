@@ -3,7 +3,7 @@ import {
   NavLink as Link
 } from 'react-router-dom';
 
-const Header = () => {
+const Header = (props) => {
   return (
     <header>
       <nav>
@@ -11,7 +11,9 @@ const Header = () => {
         <Link activeClassName='is-active' to='/our-story'>Our Story</Link>
         <Link activeClassName='is-active' to='/reception'>Reception</Link>
         <Link activeClassName='is-active' to='/registry'>Registry</Link>
-        <Link activeClassName='is-active' to='/rsvp'>RSVP</Link>
+        {props.showRSVP && 
+          <Link activeClassName='is-active' to='/rsvp'>RSVP</Link>
+        }
       </nav>
       <section>Hero</section>
     </header>
