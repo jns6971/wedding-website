@@ -49,7 +49,7 @@ function App() {
   return (
   	<Router>
 	    <div className="App">
-	    	<Header showRSVP={showRSVP}/>
+	    	<Header showRSVP={showRSVP} />
 
 	    	<Switch>
 				  <Route exact path='/' component={Home} />
@@ -62,7 +62,7 @@ function App() {
 				  <Route component={NoMatch} />
 				</Switch>
 
-				<Footer />
+				<Footer showRSVP={showRSVP} />
 	    </div>
 	  </Router>
   );
