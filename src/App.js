@@ -6,6 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 import queryString from 'query-string';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import Home from './pages/home';
 import OurStory from './pages/our-story';
@@ -17,7 +18,7 @@ import NoMatch from './pages/no-match';
 import Header from './components/header';
 import Footer from './components/footer';
 
-
+import theme from './theme'
 import './App.css';
 
 const RSVP_DISPLAY_DATE = '07-Nov-2020';
@@ -44,27 +45,29 @@ const overrideRSVP = () => {
 }
 
 function App() {
-	const showRSVP = overrideRSVP() || beforeCurrentDate(RSVP_DISPLAY_DATE);
+  const showRSVP = overrideRSVP() || beforeCurrentDate(RSVP_DISPLAY_DATE);
 
   return (
-  	<Router>
-	    <div className="App">
-	    	<Header showRSVP={showRSVP} />
+    <Router>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+        	<Header showRSVP={showRSVP} />
 
-	    	<Switch>
-				  <Route exact path='/' component={Home} />
-				  <Route path='/our-story' component={OurStory} />
-				  <Route path='/reception' component={Reception} />
-				  <Route path='/registry' component={Registry} />
-				  {showRSVP && 
-				  	<Route path='/rsvp' component={RSVP} />
-				  }
-				  <Route component={NoMatch} />
-				</Switch>
+        	<Switch>
+      		  <Route exact path='/' component={Home} />
+      		  <Route path='/our-story' component={OurStory} />
+      		  <Route path='/reception' component={Reception} />
+      		  <Route path='/registry' component={Registry} />
+      		  {showRSVP && 
+      		  	<Route path='/rsvp' component={RSVP} />
+      		  }
+      		  <Route component={NoMatch} />
+      		</Switch>
 
-				<Footer showRSVP={showRSVP} />
-	    </div>
-	  </Router>
+      		<Footer showRSVP={showRSVP} />
+        </div>
+       </ThemeProvider>
+    </Router>
   );
 }
 
