@@ -1,12 +1,13 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  NavLink as Link,
   Switch,
   Route
 } from 'react-router-dom';
 import queryString from 'query-string';
 import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 import Home from './pages/home';
 import OurStory from './pages/our-story';
@@ -18,10 +19,11 @@ import NoMatch from './pages/no-match';
 import Header from './components/header';
 import Footer from './components/footer';
 
-import theme from './theme'
+import theme from './theme';
 import './App.css';
 
 const RSVP_DISPLAY_DATE = '07-Nov-2020';
+const SHOW_WEDDING = false;
 
 /**
  * Use current date is before hardcoded string date parameter
@@ -37,21 +39,31 @@ const beforeCurrentDate = (date) => {
 };
 
 /**
- * check is RSVP is in url params
+ * check if RSVP is in url params
  */
 const overrideRSVP = () => {
 	const urlParams = queryString.parse(window.location.search);
 	return urlParams['rsvp'] !== undefined;
 }
 
+/**
+ * check if Wedding is in url params
+ */
+const overrideWedding = () => {
+  const urlParams = queryString.parse(window.location.search);
+  return urlParams['wedding'] !== undefined;
+}
+
 function App() {
   const showRSVP = overrideRSVP() || beforeCurrentDate(RSVP_DISPLAY_DATE);
+  const showWedding = overrideWedding() || SHOW_WEDDING;
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <CssBaseline />
         <div className="App">
-        	<Header showRSVP={showRSVP} />
+        	<Header showRSVP={showRSVP} showWedding={showWedding} />
 
         	<Switch>
       		  <Route exact path='/' component={Home} />
@@ -64,7 +76,7 @@ function App() {
       		  <Route component={NoMatch} />
       		</Switch>
 
-      		<Footer showRSVP={showRSVP} />
+      		<Footer showRSVP={showRSVP} showWedding={showWedding} />
         </div>
        </ThemeProvider>
     </Router>

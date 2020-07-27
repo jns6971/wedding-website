@@ -1,0 +1,21 @@
+.title {
+  padding: 38px 0 64px;
+}
+
+.title .title-word:not(:last-child) {
+  margin-right: 16px;
+  position: relative;
+}
+
+.title .title-word:not(:last-child):after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 50%;
+  right: -10px;
+  width: 4px;
+  height: 4px;
+  background-color:  #121f38;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}

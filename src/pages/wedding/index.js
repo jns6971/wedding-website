@@ -1,12 +1,12 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 
-const Registry = () => {
+const Wedding = () => {
   return (
     <main>
-      <Typography variant='h1'>Registry</Typography>
+      <Typography variant='h1'>Wedding</Typography>
     </main>
   );
 };
 
-export default Registry;
+export default Wedding;

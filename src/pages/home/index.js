@@ -1,9 +1,26 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
+
+import Hero from './../../components/hero';
+import Title from './../../components/title';
 
 const Home = () => {
   return (
     <main>
-      <h1>Home</h1>
+    	<Hero bgImage='https://via.placeholder.com/1920x1100.png'>
+    		<Typography variant='h1'>Title 1</Typography>
+    	</Hero>
+    	<Title
+    		icon='https://via.placeholder.com/55x63.png'
+    		titleArray={['This', 'is', 'a', 'title']}
+    		titleVariant='h2'
+    		subheader='subtitle'
+    	/>
+      <Typography variant='h3'>Title 3</Typography>
+      <Typography variant='h4'>Title 4</Typography>
+      <Typography variant='h5'>Title 5</Typography>
+      <Typography variant='h6'>Title 6</Typography>
+      <Typography variant='body1'>Body 1</Typography>
     </main>
   );
 };

@@ -1,16 +1,30 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Link,
+  Typography,
+  List,
+  ListItem,
+  Container
+} from '@material-ui/core';
+
+import './header.css';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexGrow: 1
+  },
+  wrapper: {
+    padding: '0 40px',
+    height: '69px',
+    [theme.breakpoints.up('md')]: {
+      height: '90px'
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -19,34 +33,73 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    flexGrow: 1,
     display: 'none',
+    justifyContent: 'center',
+    height: '100%',
     [theme.breakpoints.up('md')]: {
-      display: 'block',
-    },
-    color: theme.palette.primary.contrastText
+      display: 'flex',
+    }
+  },
+  link: {
+    display: 'flex',
+    position: 'relative',
+    verticalAlign: 'top',
+    padding: '0 24px',
+    fontSize: '11px',
+    lineHeight: '23px',
+    boxSizing: 'border-box',
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    textDecoration: 'none',
+    alignItems: 'center',
+    '&:hover': {
+      textDecoration: 'none'
+    }
   },
 }));
 
 const Header = (props) => {
   const classes = useStyles();
 
+  const showPages = {
+    showRSVP: props.showRSVP || false,
+    showWedding: props.showWedding || false
+  };
+
+  const headerClassName = `${classes.root} header`;
+  const linkClassName = `${classes.link} link`;
+
   return (
-    <div className={classes.root}>
-      <AppBar position='static' color='inherit'>
+    <div className={headerClassName}>
+      <AppBar className={classes.wrapper} position='static' color='inherit'>
         <Toolbar>
           <IconButton edge='start' className={classes.menuButton} color='inherit' aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title}>
-            <Link color='inherit' component={NavLink} exact={true} activeClassName='is-active' to='/'>Home</Link>
-            <Link color='inherit' component={NavLink} activeClassName='is-active' to='/our-story'>Our Story</Link>
-            <Link color='inherit' component={NavLink} activeClassName='is-active' to='/reception'>Reception</Link>
-            <Link color='inherit' component={NavLink} activeClassName='is-active' to='/registry'>Registry</Link>
-            {props.showRSVP && 
-              <Link color='inherit' component={NavLink} activeClassName='is-active' to='/rsvp'>RSVP</Link>
+          <Container className={classes.title} color='primary'>
+            <Link className={linkClassName} color='inherit' component={NavLink} exact={true} activeClassName='is-active' to='/'>
+              <span className='hover'>Home</span>
+            </Link>
+            <Link className={linkClassName} color='inherit' component={NavLink} activeClassName='is-active' to='/our-story'>
+              <span className='hover'>Our Story</span>
+            </Link>
+            {showPages.showWedding && 
+              <Link className={linkClassName} color='inherit' component={NavLink} activeClassName='is-active' to='/wedding'>
+                <span className='hover'>Wedding</span>
+              </Link>
             }
-          </Typography>
+            <Link className={linkClassName} color='inherit' component={NavLink} activeClassName='is-active' to='/reception'>
+              <span className='hover'>Reception</span>
+            </Link>
+            <Link className={linkClassName} color='inherit' component={NavLink} activeClassName='is-active' to='/registry'>
+              <span className='hover'>Registry</span>
+            </Link>
+            {showPages.showRSVP && 
+              <Link className={linkClassName} color='inherit' component={NavLink} activeClassName='is-active' to='/rsvp'>
+                <span className='hover'>RSVP</span>
+              </Link>
+            }
+          </Container>
         </Toolbar>
       </AppBar>
     </div>

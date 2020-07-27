@@ -1,0 +1,29 @@
+.header .hover {
+  position: relative;
+}
+
+.header .hover:before {
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: 1px;
+  background-color: #121f38;
+  bottom: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width .2s ease;
+}
+
+
+.header .is-active {
+  /*background-color: blue;*/
+}
+
+.header .is-active>.hover:before {
+  width: 20px;
+}
+
+.header a:hover>.hover:before{
+  width: 20px;
+  /*width: 0px;*/
+}

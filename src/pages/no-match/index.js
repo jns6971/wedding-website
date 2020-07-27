@@ -1,9 +1,10 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const NoMatch = () => {
   return (
     <main>
-      <h1>Page Not Found</h1>
+      <Typography variant='h1'>Page Not Found</Typography>
     </main>
   );
 };

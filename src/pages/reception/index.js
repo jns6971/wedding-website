@@ -1,9 +1,10 @@
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 const Reception = () => {
   return (
     <main>
-      <h1>Reception</h1>
+      <Typography variant='h1'>Reception</Typography>
     </main>
   );
 };
