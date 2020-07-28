@@ -18,7 +18,11 @@ const theme = createMuiTheme({
       light: '#818491',
       main: '#121f38',
       hover: '#4caf50',
-      contrastText: '#0000ff'
+      contrastText: '#fff'
+    },
+    secondary: {
+    	main: '#c78665',
+    	contrastText: '#fff'
     }
   },
   typography: {

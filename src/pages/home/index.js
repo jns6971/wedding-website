@@ -11,10 +11,12 @@ const Home = () => {
     		<Typography variant='h1'>Title 1</Typography>
     	</Hero>
     	<Title
-    		icon='https://via.placeholder.com/55x63.png'
-    		titleArray={['This', 'is', 'a', 'title']}
+    		iconUrl='https://via.placeholder.com/55x63.png'
+    		icon='test'
+    		dotsTitle={true}
+    		title='This is a title'
     		titleVariant='h2'
-    		subheader='subtitle'
+    		subtitle='subtitle'
     	/>
       <Typography variant='h3'>Title 3</Typography>
       <Typography variant='h4'>Title 4</Typography>

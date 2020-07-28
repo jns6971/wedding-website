@@ -1,7 +1,3 @@
-.title {
-  padding: 38px 0 64px;
-}
-
 .title .title-word:not(:last-child) {
   margin-right: 16px;
   position: relative;
